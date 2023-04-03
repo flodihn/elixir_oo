@@ -6,6 +6,8 @@ Object style inheritence in Elixir.
 
 When you actually want to model behaviors of "real objects", mostly items or creatures for a virtual space, inheritence can be nice.
 
+Note that multiple inheritance is not support by design, if you are experienced enough that you know you want it, you can modify the code to support it :)
+
 ## Usage
 Importing the OO module gives add the object keyword, which can be used instead of defmodule.
 
