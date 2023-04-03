@@ -3,13 +3,14 @@
 === WARNING, USE WITH EXTREME CAUTION ===
 
 Object style inheritence in Elixir.
-Sometimes, usually when you actually want to model behaviors of "real objects", mostly items or creatures for a virtual space, inheritence can be nice.
+
+When you actually want to model behaviors of "real objects", mostly items or creatures for a virtual space, inheritence can be nice.
 
 ## Usage
 Importing the OO module gives add the object keyword, which can be used instead of defmodule.
 
 mammal.ex
-```
+```elixir
 import OO
 
 object Mammal do
@@ -28,7 +29,7 @@ end
 ```
 
 dog.ex
-```
+```elixir
 import OO
 
 object Dog :: Mammal do
@@ -39,7 +40,7 @@ end
 ```
 
 cat.ex
-```
+```elixir
 import OO
 
 object Cat :: Mammal do
@@ -54,3 +55,6 @@ end
 ```
 
 For more examples look in the test directory.
+
+## TODO
+ * Objects are "static" as in C++ or C#, it would be nice to support Python'ish objects which can be instanced and have their methods/properties changed in runtime.
