@@ -20,29 +20,16 @@ defmodule OO.Builder do
         Module.put_attribute(__MODULE__, :parent, parent_obj)
         Module.put_attribute(__MODULE__, :object, unquote(object))
 
-        Module.register_attribute(__MODULE__, :properties, accumulate: true)
-
         unquote(block)
 
         def methods do
           built_ins = [
             object: 0,
             register: 2,
-            clone: 0,
-            clone: 1,
             methods: 0,
           ]
 
           __MODULE__.__info__(:functions) -- built_ins
-        end
-
-        def props() do
-          props = @properties
-          if parent() != nil do
-             props ++ parent().props()
-          else
-            props
-          end
         end
 
         def parent() do
@@ -77,7 +64,7 @@ defmodule OO.Builder do
 
   def inherit_method(method, arity, parent_obj) do
     args = (0..arity) |> Enum.drop(1) |> Enum.map(fn i -> {:"arg#{i}", [], OO} end)
-    {:defdelegate, [context: Ao, import: Kernel],
+    {:defdelegate, [context: OO, import: Kernel],
       [{method, [], args}, [to: parent_obj]]}
   end
 end
